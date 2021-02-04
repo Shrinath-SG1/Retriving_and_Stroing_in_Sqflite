@@ -1,11 +1,6 @@
-
-
-
 import 'package:dio/dio.dart';
 import 'package:network_sqflite/model/user_model2.dart';
 import 'package:network_sqflite/provider/db_helper.dart';
-
-
 
 class EmployeeApiProvider {
   Future<List<Employee>> getAllEmployees() async {
