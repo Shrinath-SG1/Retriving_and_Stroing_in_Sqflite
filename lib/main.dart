@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:network_sqflite/model/user_model2.dart';
 import 'package:network_sqflite/screen/screen1.dart';
 
 void main() {
-  runApp(User_Api());
+  runApp(MaterialApp(home: Employ(),));
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Employ(),
     );
   }
 }

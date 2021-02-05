@@ -22,11 +22,20 @@ class DBProvider {
     final path = join(documentsDirectory.path, 'employee_manager.db');
     return await openDatabase(path, version: 1, onOpen: (db) {},
         onCreate: (Database db, int version) async {
-      await db.execute('CREATE TABLE Employee('
+      await db.execute('CREATE TABLE EMPLOYEE('
           'id INTEGER PRIMARY KEY,'
           'email TEXT,'
           'username TEXT,'
-          'name TEXT'
+          'name TEXT,'
+          'phone TEXT,'
+          ')');
+      await db.execute('CREATE TABLE ADDRESS('
+          'id INTEGER,'
+          'street TEXT,'
+          'suite TEXT,'
+          'city TEXT,'
+          'zipcode TEXT,'
+          ' FOREIGN KEY (id) REFERENCES Employee (id),'
           ')');
     });
   }
@@ -48,7 +57,7 @@ class DBProvider {
 
   Future<List<Employee>> getAllEmployees() async {
     final db = await database;
-    final res = await db.rawQuery("SELECT * FROM EMPLOYEE");
+    final res = await db.rawQuery("SELECT * FROM EMPLOYEE AS E AND ADDRESS AS A WHERE E.id=A.id");
 
     List<Employee> list =
         res.isNotEmpty ? res.map((c) => Employee.fromJson(c)).toList() : [];
