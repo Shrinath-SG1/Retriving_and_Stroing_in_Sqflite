@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:network_sqflite/model/user_model2.dart';
+import 'package:network_sqflite/screen/SplashScreen.dart';
 import 'package:network_sqflite/screen/screen1.dart';
 
 void main() {
-  runApp(MaterialApp(home: Employ(),));
+  runApp(MaterialApp(home: Splash(),));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,13 +23,13 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Employ(),
+      // home: Employ(),
     );
   }
 }

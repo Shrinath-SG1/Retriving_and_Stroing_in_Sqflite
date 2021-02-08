@@ -12,8 +12,10 @@ class Employee {
   String username;
   String name;
   String phone;
+  Address address;
+  Company company;
 
-  Employee({this.id, this.email, this.username, this.name,this.phone});
+  Employee({this.id, this.email, this.username, this.name,this.phone, this.address,this.company});
 
   factory Employee.fromJson(Map<String, dynamic> json) => Employee(
         id: json["id"],
@@ -21,6 +23,10 @@ class Employee {
         username: json["username"],
         name: json["name"],
         phone: json["phone"],
+      address :
+      json['address'] != null ? new Address.fromJson(json['address']) : null,
+    company :
+    json['company'] != null ? new Company.fromJson(json['company']) : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -28,7 +34,12 @@ class Employee {
         "email": email,
         "username": username,
         "name": name,
+        if (this.address != null)
+          'address' :this.address.toJson(),
         "phone": phone,
+       if (this.company != null)
+         'company' : this.company.toJson(),
+
       };
 }
 
@@ -58,6 +69,28 @@ class Address {
     // if (this.geo != null) {
     //   data['geo'] = this.geo.toJson();
     // }
+    return data;
+  }
+}
+
+class Company {
+  String name;
+  String catchPhrase;
+  String bs;
+
+  Company({this.name, this.catchPhrase, this.bs});
+
+  Company.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    catchPhrase = json['catchPhrase'];
+    bs = json['bs'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['catchPhrase'] = this.catchPhrase;
+    data['bs'] = this.bs;
     return data;
   }
 }
